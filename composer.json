@@ -1,0 +1,17 @@
+{
+    "name": "voodoo/project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fafurin",
+            "email": "ffafurin@mail.ru"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.19"
+    }
+}
