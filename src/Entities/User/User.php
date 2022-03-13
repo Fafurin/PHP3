@@ -2,14 +2,13 @@
 
 namespace App\Entities\User;
 
-use App\Entities\EntityInterface;
-
-class User implements EntityInterface
+class User implements UserInterface
 {
     public function __construct(
         private int $id,
         private string $firstName,
         private string $lastName,
+        private string $email,
     ) {}
 
     public function getId(): int
@@ -27,6 +26,11 @@ class User implements EntityInterface
         return $this->lastName;
     }
 
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     public function __toString(): string
     {
         return sprintf(
@@ -34,6 +38,7 @@ class User implements EntityInterface
             $this->getId(),
             $this->getFirstName(),
             $this->getLastName(),
+            $this->getEmail()
         );
     }
 }

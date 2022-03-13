@@ -12,7 +12,8 @@ class UserFactory extends Factory implements UserFactoryInterface
         return new User(
             $this->faker->randomDigitNot(0),
             $this->faker->firstName(),
-            $this->faker->lastName()
+            $this->faker->lastName(),
+            $this->faker->email()
         );
     }
 }

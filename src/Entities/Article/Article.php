@@ -2,10 +2,9 @@
 
 namespace App\Entities\Article;
 
-use App\Entities\EntityInterface;
 use App\Entities\User\User;
 
-class Article implements EntityInterface
+class Article implements ArticleInterface
 {
     public function __construct(
         private int $id,
@@ -19,9 +18,9 @@ class Article implements EntityInterface
         return $this->id;
     }
 
-    public function getAuthor(): User
+    public function getAuthorId():int
     {
-        return $this->author;
+        return $this->author->getId();
     }
 
     public function getTitle(): string
@@ -39,7 +38,7 @@ class Article implements EntityInterface
         return sprintf(
             "[%d] %s %s %s",
             $this->getId(),
-            $this->getAuthor(),
+            $this->getAuthorId(),
             $this->getTitle(),
             $this->getText(),
         );

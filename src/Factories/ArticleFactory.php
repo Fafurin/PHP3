@@ -21,7 +21,7 @@ class ArticleFactory extends Factory implements ArticleFactoryInterface
         return new Article(
             $this->faker->randomDigitNot(0),
             $this->userFactory->create(),
-            $this->faker->title(),
+            $this->faker->text(30),
             $this->faker->text()
         );
     }

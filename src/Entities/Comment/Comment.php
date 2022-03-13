@@ -2,11 +2,10 @@
 
 namespace App\Entities\Comment;
 
-use App\Entities\EntityInterface;
 use App\Entities\User\User;
 use App\Entities\Article\Article;
 
-class Comment implements EntityInterface
+class Comment implements CommentInterface
 {
     public function __construct(
         private int $id,
@@ -20,14 +19,14 @@ class Comment implements EntityInterface
         return $this->id;
     }
 
-    public function getAuthor(): User
+    public function getAuthorId(): int
     {
-        return $this->author;
+        return $this->author->getId();
     }
 
-    public function getArticle(): Article
+    public function getArticleId(): int
     {
-        return $this->article;
+        return $this->article->getId();
     }
 
     public function getText(): string
@@ -40,8 +39,8 @@ class Comment implements EntityInterface
         return sprintf(
             "[%d] %s %s %s",
             $this->getId(),
-            $this->getAuthor(),
-            $this->getArticle(),
+            $this->getAuthorId(),
+            $this->getArticleId(),
             $this->getText(),
         );
     }
