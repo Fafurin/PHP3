@@ -1,14 +1,23 @@
 <?php
 
+use App\Commands\Create\CreateArticleCommand;
+use App\Commands\Create\CreateArticleCommandHandler;
+use App\Commands\Create\CreateCommentCommand;
+use App\Commands\Create\CreateCommentCommandHandler;
+use App\Commands\Delete\DeleteArticleCommandHandler;
+use App\Commands\Delete\DeleteCommand;
+use App\Commands\Delete\DeleteCommentCommandHandler;
+use App\Commands\Delete\DeleteUserCommandHandler;
+use App\Connections\SqLiteConnector;
+use App\Commands\Create\CreateUserCommand;
+use App\Commands\Create\CreateUserCommandHandler;
+use App\Entities\Article\Article;
+use App\Entities\Comment\Comment;
+use App\Entities\User\User;
+use App\Factories\RepositoryFactory;
+
 require_once 'vendor/autoload.php';
 
-use App\config\SqLiteConfig;
-use App\Connections\SqLiteConnector;
-use App\Entities\Article\Article;
-use App\Entities\Article\ArticleInterface;
-use App\Exceptions\UserNotFoundException;
-use App\Factories\EntityFactory;
-use App\Factories\RepositoryFactory;
 
 //try {
 //    echo EntityFactory::getInstance()->create($argv[1]) . PHP_EOL;
@@ -18,38 +27,33 @@ use App\Factories\RepositoryFactory;
 
 $repositoryFactory = new RepositoryFactory(new SqLiteConnector());
 
-//$user = EntityFactory::getInstance()->create('user');
+
+
+
+
+//$repositoryFactory = new RepositoryFactory(new SqLiteConnector());
 //
 //$userRepository = $repositoryFactory->create('user');
 //
-//$userRepository->save($user);
+//var_dump($userRepository->get(3));
 
-//$article = EntityFactory::getInstance()->create('article');
-//
-//$articleRepository = $repositoryFactory->create('article');
-//
-//$articleRepository->save($article);
+//$commandHandler = new DeleteArticleCommandHandler();
+//$commandHandler->handle(
+//    new DeleteCommand(3));
 
-$comment = EntityFactory::getInstance()->create('comment');
+//$commandHandler = new CreateArticleCommandHandler();
+//$commandHandler->handle(
+//    new CreateArticleCommand(
+//        new Article('234', new User('2','Ivan','Ivanov','ii@ii.com'), 'Title2', 'Text...')
+//    ));
 
-$commentRepository = $repositoryFactory->create('comment');
+//$commandHandler = new CreateCommentCommandHandler();
+//$commandHandler->handle(
+//    new CreateCommentCommand(
+//        new Comment('234', new User('2','Pavel','Ivanov','pi@ii.com'),
+//                    new Article('234', new User('2','Ivan','Ivanov','ii@ii.com'), 'Title', 'Text...'), 'Text'
+//    )));
 
-$commentRepository->save($comment);
-
-
-
-
-
-
-
-//$entityRepository = $factory->create($user);
-//
-//$entityRepository->save($user);
-//
-//try{
-//    $entityRepository->get(34);
-//}catch (UserNotFoundException $e){
-//    echo $e->getMessage();
-//}
-
-
+$commandHandler = new DeleteCommentCommandHandler();
+$commandHandler->handle(
+    new DeleteCommand(5));

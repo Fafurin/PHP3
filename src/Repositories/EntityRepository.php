@@ -13,8 +13,5 @@ abstract class EntityRepository implements EntityRepositoryInterface
     {
         $this->connector = $connector;
     }
-
-    abstract public function save(EntityInterface $entity):void;
     abstract public function get(int $id):EntityInterface;
-
 }
