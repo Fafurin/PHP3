@@ -3,6 +3,7 @@
 namespace App\Factories;
 
 use App\Entities\EntityInterface;
+use App\Enums\Argument;
 
 class EntityFactory
 {
@@ -36,9 +37,9 @@ class EntityFactory
 
     public function create(string $type): EntityInterface {
         return match ($type){
-            'user' => self::$userFactory->create(),
-            'article' => self::$articleFactory->create(),
-            'comment' => self::$commentFactory->create(),
+            Argument::USER->value => self::$userFactory->create(),
+            Argument::ARTICLE->value => self::$articleFactory->create(),
+            Argument::COMMENT->value => self::$commentFactory->create(),
         };
     }
 
